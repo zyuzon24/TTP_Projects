@@ -1,0 +1,77 @@
+body {
+    /*background: gray;*/
+    max-width: 960px;
+    margin: auto;
+    background-color: #282828;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #FF6600
+}
+
+.cs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #FF6600
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#about {
+    color: #39FF14;
+    font-size: 20px;
+    margin: 10px;
+    border: solid #FF6600 2px;
+   
+}
+
+#family {
+    color: #39FF14;
+    font-size: 20px;
+    margin: 10px;
+    border: solid #FF0000 2px;
+}
+
+#list {
+    color: pink;
+    font-size: 25px;
+    /* margin: 10px; */
+    margin-top: 10px;
+    border: solid blue 2px;
+    /*background: blue;*/
+    font-family: "Comic Sans MS"
+}
+
+/* unvisited link */
+a:link {
+    color: #45A29E;
+}
+
+/* visited link */
+a:visited {
+    color: #66FCF1;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+.fill {
+    background-color: grey;
+}
