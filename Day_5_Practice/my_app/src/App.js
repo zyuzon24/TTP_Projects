@@ -29,7 +29,7 @@ class App extends Component {
           listOfNames: updatedListOfNames
       } )
       let text = this.refs.text;
-      text = "";
+      text.value = "";
       console.log("This is the new list of names: ", this.state.listOfNames);
   }
     
@@ -41,8 +41,8 @@ class App extends Component {
       this.setState({
           listOfNames: updatedListofNames
       })
-      let text = this.refs.text;
-      text = "";
+      let txt = this.refs.txt;
+      txt.value = "";
       console.log("This is the new list of names: ", this.state.listOfNames);
   }
     
@@ -57,7 +57,7 @@ class App extends Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
             <label>
                 Add Item to the List: <br/>
-                <input onChange={this.handleChange.bind(this)} type="text" name="name" />
+                <input onChange={this.handleChange.bind(this)} type="text" name="name" ref= "text"/>
             </label>
             <input type="submit" value="Add Item" />
         </form>
@@ -67,7 +67,7 @@ class App extends Component {
         <form onSubmit={this.handleDelete.bind(this)}>
             <label>
                 Enter the number of the item you want to delete from the list: <br/>
-                <input onChange={this.handleChange.bind(this)} type="text" name="name" />
+                <input onChange={this.handleChange.bind(this)} type="text" name="name" ref="txt"/>
             </label>
             <input type="submit" value="Delete Item" />
         </form>
