@@ -33,24 +33,44 @@ class App extends Component {
       console.log("This is the new list of names: ", this.state.listOfNames);
   }
     
+  handleDelete (event) {
+      event.preventDefault();
+      const number = parseInt(this.state.name);
+      let updatedListofNames = this.state.listOfNames;
+      updatedListofNames.splice(number-1,1);
+      this.setState({
+          listOfNames: updatedListofNames
+      })
+      let text = this.refs.text;
+      text = "";
+      console.log("This is the new list of names: ", this.state.listOfNames);
+  }
+    
   render() {
     const listOfNames = this.state.listOfNames;
     const name = listOfNames.map( ( name, i ) => (<li key={i}>{name}</li>))
     return (
       <div className="App">
         <p className="App-intro">
-            Welcome to my React App!
+            To-Do List
         </p>
         <form onSubmit={this.handleSubmit.bind(this)}>
             <label>
-                Name:
+                Add Item to the List: <br/>
                 <input onChange={this.handleChange.bind(this)} type="text" name="name" />
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Add Item" />
         </form>
-        <ul>
+        <ol>
             { (name) ? name : null }
-        </ul>
+        </ol>
+        <form onSubmit={this.handleDelete.bind(this)}>
+            <label>
+                Enter the number of the item you want to delete from the list: <br/>
+                <input onChange={this.handleChange.bind(this)} type="text" name="name" />
+            </label>
+            <input type="submit" value="Delete Item" />
+        </form>
       </div>
     
     );
