@@ -24,7 +24,8 @@ class App extends Component {
       event.preventDefault();   //prevents the page from refreshing when you click the "submit button"
       const name = this.state.name;
       let updatedListOfNames = this.state.listOfNames;
-      updatedListOfNames.push(name);
+      updatedListOfNames.push({name, isStarred: false});
+      
       this.setState( {
           listOfNames: updatedListOfNames
       } )
@@ -33,22 +34,54 @@ class App extends Component {
       console.log("This is the new list of names: ", this.state.listOfNames);
   }
     
-  handleDelete (event) {
+  handleDelete (i,event) {
       event.preventDefault();
-      const number = parseInt(this.state.name);
+      /* you can also delete the item by doing
+        updatedListOfNames.filter((item,i,array) => {return item !== array[i]})*/
       let updatedListofNames = this.state.listOfNames;
-      updatedListofNames.splice(number-1,1);
+      updatedListofNames.splice(i,1);
+      console.log("i is ", i);
       this.setState({
           listOfNames: updatedListofNames
       })
-      let txt = this.refs.txt;
-      txt.value = "";
       console.log("This is the new list of names: ", this.state.listOfNames);
   }
     
+  completedTask(event) {
+      if(event.target.className === "checked"){
+        event.target.className = "unchecked";
+
+    } else {
+        event.target.className = "checked";
+    }
+  }
+    
+  starName(i, event){
+      let updatedListOfNames = this.state.listOfNames;
+      if(updatedListOfNames[i].isStarred === false){
+          event.target.src = "http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png";
+      } else {
+          event.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/2000px-Five-pointed_star.svg.png";
+      }
+      updatedListOfNames[i].isStarred = !updatedListOfNames[i].isStarred;
+      this.setState({
+        listOfNames: updatedListOfNames 
+      });
+  }
+
+    
   render() {
     const listOfNames = this.state.listOfNames;
-    const name = listOfNames.map( ( name, i ) => (<li key={i}>{name}</li>))
+    const name = listOfNames.map( ( list, i ) => ( <li key={i} className="unchecked" onClick={this.completedTask.bind(this)}>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/2000px-Five-pointed_star.svg.png" height="15" align="left" onClick={this.starName.bind(this,i)}></img>
+    {list.name}  <br/>
+    <img src="https://image.flaticon.com/icons/svg/61/61155.svg" class="close-classic" height="15" align="left" onClick={this.handleDelete.bind(this,i)} ></img>
+    
+    </li>
+        
+      
+    ))
+    
     return (
       <div className="App">
         <p className="App-intro">
@@ -64,13 +97,7 @@ class App extends Component {
         <ol>
             { (name) ? name : null }
         </ol>
-        <form onSubmit={this.handleDelete.bind(this)}>
-            <label>
-                Enter the number of the item you want to delete from the list: <br/>
-                <input onChange={this.handleChange.bind(this)} type="text" name="name" ref="txt"/>
-            </label>
-            <input type="submit" value="Delete Item" />
-        </form>
+
       </div>
     
     );
