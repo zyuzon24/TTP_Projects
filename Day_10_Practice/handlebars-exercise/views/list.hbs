@@ -1,0 +1,29 @@
+<!-- /views/list.hbs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body class="container">
+
+
+<main>
+    <div class="jumbotron">
+        <h1>This is my grocery list: HBS version</h1>
+        <ul class="store_list">
+          
+          {{#each data.groceries}}
+            <li>{{this.store}}</li>
+            <ul class="item_list">
+              {{#each this.list}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          {{/each}}
+
+        </ul>
+    </div>
+</main>
+
+</body>
+</html>

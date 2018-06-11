@@ -1,3 +1,27 @@
-let ejs = require('ejs'),
-    people = ['geddy', 'neil', 'alex'],
-    html = ejs.render('<%= people.join(", "); %>', {people: people});
+<!-- /views/list.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body class="container">
+
+
+<main>
+    <div class="jumbotron">
+        <h1>This is my grocery list: EJS version</h1>
+        <ul class="grocery_list">
+          <% for(var i = 0; i < data.groceries.length; i++){ %>
+              <li> <%= data.groceries[i].store %></li>
+              <ul>
+                <% for(var j = 0; j < data.groceries[i].list.length; j++) {%>
+                      <li> <%= data.groceries[i].list[j] %></li>
+                <%  } %>
+              </ul>
+          <%  } %>
+        </ul>
+    </div>
+</main>
+
+</body>
+</html>
