@@ -38,6 +38,7 @@ class App extends Component {
       event.preventDefault();
       /* you can also delete the item by doing
         updatedListOfNames.filter((item,i,array) => {return item !== array[i]})*/
+      
       let updatedListofNames = this.state.listOfNames;
       updatedListofNames.splice(i,1);
       console.log("i is ", i);
@@ -60,8 +61,10 @@ class App extends Component {
       let updatedListOfNames = this.state.listOfNames;
       if(updatedListOfNames[i].isStarred === false){
           event.target.src = "http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png";
+          event.target.alt = "starred";
       } else {
           event.target.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/2000px-Five-pointed_star.svg.png";
+          event.target.alt = "unstarred";
       }
       updatedListOfNames[i].isStarred = !updatedListOfNames[i].isStarred;
       this.setState({
@@ -73,13 +76,13 @@ class App extends Component {
   render() {
     const listOfNames = this.state.listOfNames;
     const name = listOfNames.map( ( list, i ) => ( <li key={i} className="unchecked" onClick={this.completedTask.bind(this)}>
+                                 
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/2000px-Five-pointed_star.svg.png" height="15" align="left" onClick={this.starName.bind(this,i)}></img>
+
     {list.name}  <br/>
-    <img src="https://image.flaticon.com/icons/svg/61/61155.svg" class="close-classic" height="15" align="left" onClick={this.handleDelete.bind(this,i)} ></img>
-    
-    </li>
         
-      
+    <img src="https://image.flaticon.com/icons/svg/61/61155.svg" class="close-classic" height="15" align="left" onClick={this.handleDelete.bind(this,i)} ></img>
+    </li>
     ))
     
     return (
