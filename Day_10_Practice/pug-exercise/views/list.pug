@@ -1,0 +1,10 @@
+html
+    body
+        h1 This is my grocery list: PUG version
+        p
+          ul
+            each val in data.groceries
+              li= val.store
+              ul
+                each item in val.list
+                  li= item
