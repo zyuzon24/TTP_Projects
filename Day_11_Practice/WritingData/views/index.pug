@@ -1,0 +1,13 @@
+html
+    body
+        h1 Survey: Favorite Colors
+        p Please enter your full name and your favorite color
+        div
+          form(action='/myform', method="POST", id="form")
+            p Name:
+              input(value="", type="text", name="name")
+              br
+            p Favorite Color:
+              input(value="", type="text" name ="color")
+            p
+              button(id="") Submit
