@@ -1,0 +1,10 @@
+html
+    head
+    style
+      include style.css
+    body
+        h1 This is my list of shows:
+        p
+          ul
+            each val in shows
+              li: a(href='/shows/' + val.title) #{val.title}

@@ -4,7 +4,6 @@ var app = express();
 app.set('view engine', 'pug');
 
 var data = {
-    groceries: [{
     store: 'Acme',
     list: [
         'strawberries',
