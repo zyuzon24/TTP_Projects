@@ -7,4 +7,4 @@ html
         p
           ul
             each val in shows
-              li: a(href='/shows/' + val.title) #{val.title}
+              li(class='showItem'): a(href='/shows/' + val.title) #{val.title}
