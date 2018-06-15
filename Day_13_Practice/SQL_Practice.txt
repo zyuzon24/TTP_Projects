@@ -1,5 +1,32 @@
-The output for the completed Star Wars Assignment:
+1. Return the names of all the jedi classmates.
+  select * from jedis;
 
+Select all the SITH (red lightsabers from jedis)
+ SELECT name FROM jedis WHERE lightsaber_color = 'red';
+
+There was an assassination by the Sith! All the green lightsaber owners need to be deleted from the records!
+DELETE FROM jedis WHERE lightsaber_color = 'green';
+
+A New Jedi emerges. Add "The unknown" with a "black" lightsaber who has 100 years training, never tempted by the dark side
+INSERT INTO jedis (name, lightsaber_color, years_training, tempted_by_dark_side) VALUES ('The Unknown', 'black', 100, '0');
+
+The new Jedi trains all of the blue light saber owners. They dobule their years_training instantly.
+UPDATE jedis SET years_training = years_training * 2 WHERE lightsaber_color = 'blue';
+
+The orange lightsaber owners attack the unknown in the night. Ultimate fail. Remove the orange lightsaber owners.
+ DELETE FROM jedis WHERE lightsaber_color = 'orange';
+
+ Concerned, The new Jedi converts the brown and purple lightsaber owners to blue, and doubles their training also...
+ UPDATE jedis SET years_training = years_training * 2 WHERE lightsaber_color = 'brown' OR lightsaber_color = 'purple';
+
+ The ultimate Jedi battle takes place. Sadly, all novice Jedi (good and bad) with < 20 years_training need to be deleted from our records.
+ DELETE FROM jedis WHERE years_training < 20;
+
+ The unknown one vanishes. Remove them from the records.
+ DELETE FROM jedis WHERE name = 'The Unknown';
+
+
+The output for the completed Star Wars Assignment:
 id |        name        | lightsaber_color | years_training | tempted_by_dark_side
 ----+--------------------+------------------+----------------+----------------------
 21 | Nikki Solo         | yellow           |            100 | f
